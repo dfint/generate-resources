@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 from typing import NamedTuple
 
 
+base_url = "http://www.bay12games.com/dwarves/"
+
+
 class ReleaseInfo(NamedTuple):
     name: str
     classic_win_url: str
@@ -10,19 +13,8 @@ class ReleaseInfo(NamedTuple):
     linux_url: str
 
 
-def get_latest_release() -> ReleaseInfo:
-    """
-    Get the latest release of Dwarf Fortress from the downloads page
-
-    Returns:
-        ReleaseInfo: information about the latest release
-    """
-    base_url = "http://www.bay12games.com/dwarves/"
-    url = base_url + "older_versions.html"
-    response = requests.get(url)
-    response.raise_for_status()
-    
-    soup = BeautifulSoup(response.content, 'html.parser')
+def parse_download_info(page_content: bytes) -> ReleaseInfo:
+    soup = BeautifulSoup(page_content, 'html.parser')
     body = soup.body
     
     tables = body.select("table")
@@ -32,9 +24,23 @@ def get_latest_release() -> ReleaseInfo:
     
     links = dict()
     for link in release_table.select("a")[:3]:
-        links[link.text] = base_url + link["href"]
+        name = link.text.lower().partition(" ")[0]
+        links[name] = base_url + link["href"]
 
-    return ReleaseInfo(release_name, links["Classic Windows"], links["Small"], links["Linux"])
+    return ReleaseInfo(release_name, links["classic"], links["small"], links["linux"])
+
+
+def get_latest_release() -> ReleaseInfo:
+    """
+    Get the latest release of Dwarf Fortress from the downloads page
+
+    Returns:
+        ReleaseInfo: information about the latest release
+    """
+    url = base_url + "older_versions.html"
+    response = requests.get(url)
+    response.raise_for_status()
+    return parse_download_info(response.content)
 
 
 if __name__ == "__main__":
