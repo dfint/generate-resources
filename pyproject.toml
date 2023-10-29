@@ -14,3 +14,6 @@ streamlit = "^1.28.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+app = "streamlit run streamlit_app.py"
