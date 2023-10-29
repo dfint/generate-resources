@@ -2,12 +2,12 @@
 
 ## Running
 
-Install poethepoet:
+Install [poethepoet](https://github.com/nat-n/poethepoet):
 ```
 pipx install poethepoet
 ```
 
 Run the app:
 ```
-poe run app
+poe app
 ```
