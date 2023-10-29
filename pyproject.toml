@@ -16,4 +16,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-app = "streamlit run streamlit_app.py"
+run = "streamlit run streamlit_app.py"

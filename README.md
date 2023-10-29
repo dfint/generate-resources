@@ -13,5 +13,9 @@ pipx install poethepoet
 
 Run the app:
 ```
-poe app
+poe run
 ```
+This will run streamlit application locally.
+
+This application deployed to streamlit.io (private):  
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dfint-generate-resources.streamlit.app/)
