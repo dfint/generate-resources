@@ -1,7 +1,8 @@
 from datetime import timedelta
+from pathlib import Path
+
 import requests
 import streamlit as st
-from pathlib import Path
 
 import parse_downloads_page
 
@@ -30,10 +31,10 @@ button = st.button(download_button_text)
 
 if button:
     st.write("Loading...")
-    
+
     response = requests.get(url)
     response.raise_for_status()
-    
+
     Path(file_name).open("wb").write(response.content)
-    
+
     st.write("Loaded.")

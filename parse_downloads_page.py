@@ -1,7 +1,7 @@
-import requests
-from bs4 import BeautifulSoup
 from typing import NamedTuple
 
+import requests
+from bs4 import BeautifulSoup
 
 base_url = "http://www.bay12games.com/dwarves/"
 
@@ -14,14 +14,14 @@ class ReleaseInfo(NamedTuple):
 
 
 def parse_download_info(page_content: bytes) -> ReleaseInfo:
-    soup = BeautifulSoup(page_content, 'html.parser')
+    soup = BeautifulSoup(page_content, "html.parser")
     body = soup.body
-    
+
     tables = body.select("table")
     release_table = tables[1]
-    
+
     release_name = release_table.find("p").contents[0]
-    
+
     links = dict()
     for link in release_table.select("a")[:3]:
         name = link.text.lower().partition(" ")[0]
