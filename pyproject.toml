@@ -20,7 +20,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-run = "streamlit run streamlit_app.py"
+run = "streamlit run Home.py"
 
 [tool.black]
 line-length = 120

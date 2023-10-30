@@ -12,8 +12,6 @@ def get_latest_release():
     return parse_downloads_page.get_latest_release()
 
 
-st.write("Fetching latest release info...")
-
 latest_release_info = get_latest_release()
 
 st.write("Latest release:", latest_release_info.name)
