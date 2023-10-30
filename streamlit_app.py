@@ -1,12 +1,19 @@
+from datetime import timedelta
 import requests
 import streamlit as st
 from pathlib import Path
 
 import parse_downloads_page
 
+
+@st.cache_resource(ttl=timedelta(hours=6))
+def get_latest_release():
+    return parse_downloads_page.get_latest_release()
+
+
 st.write("Fetching latest release info...")
 
-latest_release_info = parse_downloads_page.get_latest_release()
+latest_release_info = get_latest_release()
 
 st.write("Latest release:", latest_release_info.name)
 
