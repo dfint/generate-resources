@@ -19,20 +19,22 @@ st.write("Latest release:", latest_release_info.name)
 url = latest_release_info.classic_win_small_url
 file_name = url.rpartition("/")[2]
 
-if Path(file_name).is_file():
-    st.write("File already loaded")
-    download_button_text = "Download again"
-else:
-    download_button_text = "Download"
 
-button = st.button(download_button_text)
-
-if button:
+def download(url, file_name):
     st.write("Loading...")
-
     response = requests.get(url)
     response.raise_for_status()
 
     Path(file_name).open("wb").write(response.content)
+    st.write(f"File {file_name} loaded")
 
-    st.write("Loaded.")
+
+if Path(file_name).is_file():
+    st.write(f"File {file_name} already loaded")
+else:
+    download(url, file_name)
+
+button = st.button("Download again")
+
+if button:
+    download(url, file_name)
