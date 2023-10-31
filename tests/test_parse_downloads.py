@@ -10,7 +10,7 @@ tests_dir = Path(__file__).parent
 
 @pytest.fixture
 def downloads_page():
-    with open(tests_dir / "downloads.html") as file:
+    with open(tests_dir / "assets" / "downloads.html") as file:
         yield file.read()
 
 
