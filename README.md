@@ -1,5 +1,7 @@
 # generate-resources
 
+[![Coverage Status](https://coveralls.io/repos/github/dfint/generate-resources/badge.svg?branch=main)](https://coveralls.io/github/dfint/generate-resources?branch=main)
+
 **Work in progress :construction:.**
 
 A streamlit app to generate stringdumps and pot resouces from a new DF release.
