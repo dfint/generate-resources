@@ -2,8 +2,7 @@ from pathlib import Path
 
 import pytest
 
-
-from parse_downloads_page import ReleaseInfo, base_url, parse_download_info
+from download_source import ReleaseInfo, base_url, parse_download_info
 
 tests_dir = Path(__file__).parent
 

@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import NamedTuple
 
 import requests
@@ -41,6 +42,12 @@ def get_latest_release() -> ReleaseInfo:
     response = requests.get(url)
     response.raise_for_status()
     return parse_download_info(response.content)
+
+
+def download_file(url: str, file_name: str) -> None:
+    response = requests.get(url)
+    response.raise_for_status()
+    Path(file_name).open("wb").write(response.content)
 
 
 if __name__ == "__main__":
