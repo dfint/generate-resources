@@ -6,7 +6,7 @@ import streamlit as st
 import download_source
 
 
-@st.cache_resource(ttl=timedelta(hours=6), show_spinner="Gettin latest version info...")
+@st.cache_resource(ttl=timedelta(hours=6), show_spinner="Getting latest version info...")
 def get_latest_release():
     return download_source.get_latest_release()
 
