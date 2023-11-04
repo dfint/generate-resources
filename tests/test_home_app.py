@@ -19,9 +19,7 @@ def apptest(get_latest_release, download_file):
     
     download_file.return_value = None
     
-    apptest = AppTest.from_file("Home.py")
-    apptest.run()
-    return apptest
+    return AppTest.from_file("Home.py").run()
 
 
 def test_smoketest(apptest):
