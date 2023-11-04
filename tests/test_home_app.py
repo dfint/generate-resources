@@ -1,8 +1,8 @@
-import pytest
-from streamlit.testing.v1 import AppTest
 from unittest.mock import patch
 
-import download_source
+import pytest
+from streamlit.testing.v1 import AppTest
+
 from download_source import ReleaseInfo
 
 
