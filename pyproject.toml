@@ -12,9 +12,9 @@ streamlit = "^1.30.0"
 beautifulsoup4 = "^4.12.3"
 
 [tool.poetry.group.dev.dependencies]
-black = "^24.1.1"
+black = "^24.2.0"
 isort = "^5.13.2"
-pytest = "^8.0.0"
+pytest = "^8.0.2"
 flake8 = "^7.0.0"
 pytest-cov = "^4.1.0"
 
