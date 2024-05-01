@@ -28,7 +28,7 @@ st.write("Latest release:", latest_release_info.name)
 url = latest_release_info.classic_win_small_url
 file_name = url.rpartition("/")[2]
 
-if Path(file_name).is_file():
+if (downloads / file_name).is_file():
     st.write(f"File {file_name} already loaded")
 else:
     download(url, file_name)
