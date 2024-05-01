@@ -5,6 +5,9 @@ import streamlit as st
 
 import download_source
 
+downloads = Path("downloads")
+downloads.mkdir(exist_ok=True)
+
 
 @st.cache_resource(ttl=timedelta(hours=6), show_spinner="Getting latest version info...")
 def get_latest_release():
@@ -13,7 +16,7 @@ def get_latest_release():
 
 def download(url, file_name):
     with st.spinner(f"Loading {file_name}..."):
-        download_source.download_file(url, file_name)
+        download_source.download_file(url, downloads / file_name)
 
     st.write(f"File {file_name} loaded")
 
