@@ -14,12 +14,9 @@ peclasses = {version = "^0.4.0", source = "dfint"}
 dfint64-patch = {version = "^0.1.0", source = "dfint"}
 
 [tool.poetry.group.dev.dependencies]
-black = "^24.4.2"
-isort = "^5.13.2"
 pytest = "^8.2.2"
-flake8 = "^7.1.0"
 pytest-cov = "^5.0.0"
-
+ruff = "^0.5.2"
 
 [[tool.poetry.source]]
 name = "dfint"
@@ -33,11 +30,20 @@ build-backend = "poetry.core.masonry.api"
 [tool.poe.tasks]
 run = "streamlit run Home.py"
 
-[tool.black]
-line-length = 120
-
-[tool.isort]
-profile = "black"
-
 [tool.ruff]
 line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",  # Ignore all documentation warnings. Probably not the best option in real projects.
+    "SIM115",
+    "N999",  # Allow non-pep8 module names
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+    "S101",  # Don't warn about using of asserts in tests
+    "ANN201",  # Don't warn on missing return type annotation in tests
+]

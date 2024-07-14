@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 from typing import NamedTuple
 
@@ -23,7 +25,7 @@ def parse_download_info(page_content: bytes) -> ReleaseInfo:
 
     release_name = release_table.find("p").contents[0]
 
-    links = dict()
+    links = {}
     for link in release_table.select("a")[:3]:
         name = link.text.lower().partition(" ")[0]
         links[name] = base_url + link["href"]
@@ -39,16 +41,12 @@ def get_latest_release() -> ReleaseInfo:
         ReleaseInfo: information about the latest release
     """
     url = base_url + "older_versions.html"
-    response = requests.get(url)
+    response = requests.get(url, timeout=30)
     response.raise_for_status()
     return parse_download_info(response.content)
 
 
 def download_file(url: Path | str, file_name: str) -> None:
-    response = requests.get(url)
+    response = requests.get(url, timeout=30)
     response.raise_for_status()
     Path(file_name).open("wb").write(response.content)
-
-
-if __name__ == "__main__":
-    print(get_latest_release())

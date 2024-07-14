@@ -10,11 +10,11 @@ downloads.mkdir(exist_ok=True)
 
 
 @st.cache_resource(ttl=timedelta(hours=6), show_spinner="Getting latest version info...")
-def get_latest_release():
+def get_latest_release() -> download_source.ReleaseInfo:
     return download_source.get_latest_release()
 
 
-def download(url, file_name):
+def download(url: str, file_name: str) -> None:
     with st.spinner(f"Loading {file_name}..."):
         download_source.download_file(url, downloads / file_name)
 
