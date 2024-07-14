@@ -6,7 +6,7 @@ from streamlit.testing.v1 import AppTest
 from download_source import ReleaseInfo
 
 
-@pytest.fixture
+@pytest.fixture()
 @patch("download_source.download_file")
 @patch("download_source.get_latest_release")
 def apptest(get_latest_release, download_file):
@@ -16,9 +16,9 @@ def apptest(get_latest_release, download_file):
             "small/file.zip",
             "linux/file.tar.bz2",
         )
-    
+
     download_file.return_value = None
-    
+
     return AppTest.from_file("Home.py").run()
 
 

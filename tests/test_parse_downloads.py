@@ -7,7 +7,7 @@ from download_source import ReleaseInfo, base_url, parse_download_info
 tests_dir = Path(__file__).parent
 
 
-@pytest.fixture
+@pytest.fixture()
 def downloads_page():
     with open(tests_dir / "assets" / "downloads.html") as file:
         yield file.read()
