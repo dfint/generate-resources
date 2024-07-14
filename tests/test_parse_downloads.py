@@ -9,11 +9,10 @@ tests_dir = Path(__file__).parent
 
 @pytest.fixture()
 def downloads_page():
-    with open(tests_dir / "assets" / "downloads.html") as file:
-        yield file.read()
+    return Path.open(tests_dir / "assets" / "downloads.html").read()
 
 
-def test_parse_downloads_page(downloads_page):
+def test_parse_downloads_page(downloads_page: str):
     result = parse_download_info(downloads_page)
     assert result == ReleaseInfo(
         name="DF 50.11 (October 3, 2023)",
