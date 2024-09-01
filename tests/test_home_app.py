@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-@pytest.fixture()
+@pytest.fixture
 @patch("download_source.download_file")
 @patch("download_source.get_latest_release")
 def apptest(get_latest_release: Callable[[], ReleaseInfo], download_file: Callable[[Path | str, str], None]):
