@@ -9,7 +9,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-streamlit = "^1.39.0"
+streamlit = "^1.40.2"
 beautifulsoup4 = "^4.12.3"
 peclasses = {version = "^0.4.0", source = "dfint"}
 dfint64-patch = {version = "^0.1.0", source = "dfint"}
