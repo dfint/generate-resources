@@ -16,7 +16,7 @@ dfint64-patch = {version = "^0.2.0", source = "dfint"}
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
-ruff = "^0.9.4"
+ruff = "^0.9.9"
 
 [[tool.poetry.source]]
 name = "dfint"
